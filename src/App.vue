@@ -1,13 +1,6 @@
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+<script lang="ts" setup>
 import WeatherWidget from './components/WeatherWidget.vue';
 
-@Options({
-  components: {
-    WeatherWidget,
-  },
-})
-export default class App extends Vue {}
 </script>
 
 <template>

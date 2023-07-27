@@ -1,32 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
+
+$yellow:#FACB59;
+$orange: #F9A545;
+$green: #1ABB85;
+$blue: #031926;
+
 * {
+	font-family: 'Roboto', sans-serif;
 	padding: 0px;
 	margin: 0px;
 	border: none;
+	::before,
+	::after {
+		box-sizing: border-box;
+	}
 }
 
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
+body {
+	max-width: 1920px;
+	background-color: #12211a;
 }
 
-/* Links */
-
-a, a:link, a:visited  {
+a, a:link, a:visited, a:hover  {
     text-decoration: none;
-}
-
-a:hover  {
-    text-decoration: none;
-}
-
-/* Common */
-footer, header, section, main {
-	display: block;
+		color: $orange;
 }
 
 h1, h2, h3, h4, h5, h6, p {
-    font-size: inherit;
+  font-size: inherit;
 	font-weight: inherit;
 }
 
@@ -45,9 +46,9 @@ img, svg {
 
 input, textarea, button, select {
 	font-family: inherit;
-    font-size: inherit;
-    color: inherit;
-    background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
 }
 
 input::-ms-clear {
@@ -55,19 +56,179 @@ input::-ms-clear {
 }
 
 button, input[type="submit"] {
-    display: inline-block;
-    box-shadow: none;
-    background-color: transparent;
-    background: none;
-    cursor: pointer;
+  display: inline-block;
+  box-shadow: none;
+  background-color: transparent;
+  background: none;
+  cursor: pointer;
 }
 
 input:focus, input:active,
 button:focus, button:active {
-    outline: none;
+  outline: none;
 }
 
 button::-moz-focus-inner {
 	padding: 0;
 	border: 0;
+}
+
+.header {
+	position: relative;
+	font-size: 24px;
+	padding: 20px 50px;
+	align-items: center;
+	background-color: $green;
+	display: flex;
+	justify-content: space-between
+	;
+	.header__title {
+		color: white;
+	};
+	.header__settings-visible {
+		cursor: pointer;
+		height: 30px;
+		path{
+			fill: $yellow;
+		}
+	}
+}
+
+.settings {
+	padding: 10px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 300px;
+	background-color: $yellow;
+	.settings__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		.settings__header-title {
+			font-size: 18px;
+		}
+		.settings__header-close {
+			cursor: pointer;
+			height: 30px;
+			path {
+				fill: $green;
+			}
+		}
+	}
+	.settings__search {
+		max-width: 280px;
+		padding: 10px;
+		.settings__search-title {
+			font-size: 20px;
+		}
+		.settings__search-input {
+			border: 1px solid $green;
+			width: 100%;
+			display: flex;
+			font-size: 14px;
+			input {
+				width: 70%;
+				padding-left: 10px;
+			}
+			button {
+				text-align: center;
+				padding: 5px;
+				width: 30%;
+				background-color: #1ABB85;
+				svg {
+					height: 15px;
+					path {
+						fill: $yellow;
+					}
+				}
+			}
+		}
+		.settings__search-error {
+			padding-top: 10px;
+			font-size: 14px;
+			color: red;
+		}
+	}
+	.settings__main {
+		width: 100%;
+	}
+}
+
+.item {
+	display: flex;
+	font-size: 20px;
+	padding: 5px;
+	justify-content: space-between;
+	.item__icon {
+		height: 30px;
+		width: 30px;
+	}
+}
+
+.burger {
+	cursor: grab;
+}
+
+.delete {
+	cursor: pointer;
+}
+
+.main {
+	padding: 45px;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.card {
+	max-width: 300px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	margin: 20px;
+}
+
+.location {
+	color: white;
+	padding: 20px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	.location__title {
+		font-size: 24px;
+	}
+	.location__api {
+		border: 1px solid $orange;
+		display: flex;
+		align-items: center;
+		margin: 20px 0;
+		max-width: 600px;
+		width: 100%;
+		input {
+			padding-left: 10px;
+			width: 70%;
+			font-size: 24px;
+		}
+		button {
+			width: 30%;
+			background-color: $orange;
+			svg {
+				height: 40px;
+				path {
+					fill: $green;
+				}
+			}
+		}
+	}
+}
+
+.hot {
+	background-color: $orange;
+}
+
+.cold {
+	color: white;
+	background-color: $blue;
 }
