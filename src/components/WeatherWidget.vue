@@ -16,11 +16,20 @@ const weatherItems: Ref<TWeather[]> = ref([])
 const geoLatitude: Ref<number> = ref(0)
 const geoLongitude: Ref<number> = ref(0)
 const currentIndex: Ref<number> = ref(0)
+const errorMyLocation: Ref<string> = ref('')
+const errorAddLocation: Ref<string> = ref('')
 
 const addLocation = (land: string) => {
   fetch(`${API_MAIN}/${API_VERISON}/weather?q=${land}&units=metric&appid=${API_KEY}`)
     .then(res => res.json())
-    .then(data => weatherItems.value.push({land: data?.name, temp: Math.round(data?.main?.temp), wind: Math.round(data?.wind?.speed), description: data.weather[0].description}))
+    .then(data => {
+      if (data.cod === 200) {
+        weatherItems.value.push({land: data?.name, temp: Math.round(data?.main?.temp), wind: Math.round(data?.wind?.speed), description: data.weather[0].description})
+        errorAddLocation.value = ''
+      } else {
+        errorAddLocation.value = data.message
+      }
+    })
     .catch(error => console.error(error))
 }
 
@@ -45,7 +54,12 @@ const dropHandl = (e: Event, index: number) => {
 const weatherMyLocation = (key: string) => {
   fetch(`${API_MAIN}/${API_VERSION_NEW}/onecall?lat=${geoLatitude.value}&lon=${geoLongitude.value}&appid=${key}`)
     .then(res => res.json())
-    .then(data => data.cod === 200 && weatherItems.value.push({land: 'Your city', temp: Math.round(data?.current?.temp), wind: Math.round(data?.current?.wind_speed), description: data.current?.weather[0]?.description}))
+    .then(data => {
+      if(data.code === 200) {
+        weatherItems.value.push({land: 'Your city', temp: Math.round(data?.current?.temp), wind: Math.round(data?.current?.wind_speed), description: data.current?.weather[0]?.description})
+        errorMyLocation.value = ''
+      } else errorMyLocation.value = data.message
+    })
     .catch(error => console.error(error))
 }
 
@@ -82,8 +96,9 @@ onUpdated(() => {
     :dragStartHandl="dragStartHandl"
     :dragOverHandl="dragOverHandl"
     :dropHandl="dropHandl"
+    :errorAddLocation="errorAddLocation"
   />
-  <my-location :weatherMyLocation="weatherMyLocation"/>
+  <my-location :weatherMyLocation="weatherMyLocation" :errorMyLocation="errorMyLocation"/>
   <div class="main">
     <weather-card v-for="weather, index in weatherItems"
       :key="index"

@@ -3,13 +3,14 @@ import { Ref, ref } from 'vue';
 import HeartIcon from '@heroicons/vue/24/solid/HeartIcon'
 
 const props = defineProps({
-  weatherMyLocation: Function
+  weatherMyLocation: Function,
+  errorMyLocation: String
 })
 
 const apiKey: Ref<string> = ref('')
 
 const setMyLocation = () => {
-  const res = props.weatherMyLocation && props.weatherMyLocation(apiKey.value)
+  props.weatherMyLocation && props.weatherMyLocation(apiKey.value)
   apiKey.value = ''
 }
 </script>
@@ -21,6 +22,7 @@ const setMyLocation = () => {
       <input type="text" v-model="apiKey">
       <button @click="setMyLocation"><heart-icon/></button>
     </div>
+    <p class="location__error">{{ errorMyLocation }}</p>
     <div class="location__description">
       To get the weather from your location, 
       you need to purchase a <a target="_blank" href="https://openweathermap.org/api">subscription</a> and insert your API_KEY

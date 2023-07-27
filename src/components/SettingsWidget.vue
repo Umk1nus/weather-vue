@@ -13,6 +13,7 @@ const props = defineProps({
   dropHandl: Function,
   dragStartHandl: Function,
   dragOverHandl: Function,
+  errorAddLocation: String,
 })
 
 const searchValue: Ref<string> = ref('')
@@ -42,7 +43,7 @@ const getLocation = () => {
         </button>
       </div>
       <p class="settings__search-error">
-        {{ error }}
+        {{ error || errorAddLocation }}
       </p>
     </div>
     <div class="settings__main">

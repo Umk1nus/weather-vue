@@ -10,6 +10,7 @@ defineProps({
   dropHandl: Function,
   dragStartHandl: Function,
   dragOverHandl: Function,
+  errorAddLocation: String
 })
 
 const visibleSettings = ref(false)
@@ -24,6 +25,7 @@ const setVisibleSettings = () => {
     <h1 class="header__title">Umk1nus Weather Widget</h1>
     <settings-icon class="header__settings-visible" @click="setVisibleSettings()"/>
     <settings-widget
+      :errorAddLocation="errorAddLocation"
       :setVisibleSettings="setVisibleSettings"
       :deleteLocation="deleteLocation" 
       :weatherItems="weatherItems" 
