@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Ref, ref } from 'vue';
-import HeartIcon from '@heroicons/vue/24/solid/HeartIcon'
+import ArrowIcon from '@heroicons/vue/24/solid/ArrowRightIcon'
 
 const props = defineProps({
   weatherMyLocation: Function,
@@ -13,6 +13,7 @@ const setMyLocation = () => {
   props.weatherMyLocation && props.weatherMyLocation(apiKey.value)
   apiKey.value = ''
 }
+
 </script>
 
 <template>
@@ -20,7 +21,7 @@ const setMyLocation = () => {
     <h3 class="location__title">Enter your API_KEY</h3>
     <div class="location__api">
       <input type="text" v-model="apiKey">
-      <button @click="setMyLocation"><heart-icon/></button>
+      <button @click="setMyLocation"><arrow-icon/></button>
     </div>
     <p class="location__error">{{ errorMyLocation }}</p>
     <div class="location__description">

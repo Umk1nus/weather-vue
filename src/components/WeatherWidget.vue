@@ -2,14 +2,15 @@
 import HeaderWidget from './HeaderWidget.vue'
 import WeatherCard from './WeatherCard.vue'
 import MyLocation from './MyLocation.vue'
-import { API_KEY, API_MAIN, API_VERISON, API_VERSION_NEW } from '../constants'
+import { API_KEY, API_MAIN, API_VERSION} from '../constants'
 import { Ref, onBeforeMount, onUpdated, ref } from 'vue';
 
 type TWeather = {
   land: string,
   temp: number,
   wind: number,
-  description: string
+  description: string,
+  id_weather: string,
 }
 
 const weatherItems: Ref<TWeather[]> = ref([])
@@ -20,11 +21,11 @@ const errorMyLocation: Ref<string> = ref('')
 const errorAddLocation: Ref<string> = ref('')
 
 const addLocation = (land: string) => {
-  fetch(`${API_MAIN}/${API_VERISON}/weather?q=${land}&units=metric&appid=${API_KEY}`)
+  fetch(`${API_MAIN}/${API_VERSION}/weather?q=${land}&units=metric&appid=${API_KEY}`)
     .then(res => res.json())
     .then(data => {
       if (data.cod === 200) {
-        weatherItems.value.push({land: data?.name, temp: Math.round(data?.main?.temp), wind: Math.round(data?.wind?.speed), description: data.weather[0].description})
+        weatherItems.value.push({land: data?.name, temp: Math.round(data?.main?.temp), wind: Math.round(data?.wind?.speed), description: data.weather[0].description, id_weather: data.weather[0].icon.slice(0, -1)})
         errorAddLocation.value = ''
       } else {
         errorAddLocation.value = data.message
@@ -52,11 +53,11 @@ const dropHandl = (e: Event, index: number) => {
 }
 
 const weatherMyLocation = (key: string) => {
-  fetch(`${API_MAIN}/${API_VERSION_NEW}/onecall?lat=${geoLatitude.value}&lon=${geoLongitude.value}&appid=${key}`)
+  fetch(`${API_MAIN}/${API_VERSION}/onecall?lat=${geoLatitude.value}&lon=${geoLongitude.value}&appid=${key}`)
     .then(res => res.json())
     .then(data => {
       if(data.code === 200) {
-        weatherItems.value.push({land: 'Your city', temp: Math.round(data?.current?.temp), wind: Math.round(data?.current?.wind_speed), description: data.current?.weather[0]?.description})
+        weatherItems.value.push({land: 'Your city', temp: Math.round(data?.current?.temp), wind: Math.round(data?.current?.wind_speed), description: data.current?.weather[0]?.description, id_weather: data.current?.weather[0]?.icon.slice(0, -1)})
         errorMyLocation.value = ''
       } else errorMyLocation.value = data.message
     })
@@ -106,6 +107,7 @@ onUpdated(() => {
       :temp="weather.temp" 
       :wind="weather.wind" 
       :description="weather.description"
+      :idWeather="weather.id_weather"
     />
   </div>
 </template>
