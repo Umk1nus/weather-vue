@@ -96,22 +96,22 @@ button::-moz-focus-inner {
 }
 
 .settings {
-	padding: 10px;
+	padding: 20px 50px;
 	position: absolute;
 	right: 0;
 	top: 0;
 	width: 300px;
-	background-color: $yellow;
+	background-color: #d9d9d9;
 	.settings__header {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		.settings__header-title {
-			font-size: 18px;
+			font-size: 1em;
 		}
 		.settings__header-close {
 			cursor: pointer;
-			height: 30px;
+			height: 40px;
 			path {
 				fill: $green;
 			}
@@ -119,15 +119,17 @@ button::-moz-focus-inner {
 	}
 	.settings__search {
 		max-width: 280px;
-		padding: 10px;
+		padding: 10px 0;
 		.settings__search-title {
 			font-size: 20px;
 		}
 		.settings__search-input {
-			border: 1px solid $green;
+			margin: 10px 0;
+			border: 2px solid $green;
 			width: 100%;
 			display: flex;
 			font-size: 14px;
+			border-radius: 12px;
 			input {
 				width: 70%;
 				padding-left: 10px;
@@ -135,12 +137,13 @@ button::-moz-focus-inner {
 			button {
 				text-align: center;
 				padding: 5px;
+				border-radius: 0px 10px 10px 0px;
 				width: 30%;
 				background-color: #1ABB85;
 				svg {
-					height: 15px;
+					height: 20px;
 					path {
-						fill: $orange;
+						fill: white;
 					}
 				}
 			}
@@ -153,17 +156,28 @@ button::-moz-focus-inner {
 	}
 	.settings__main {
 		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 }
 
 .item {
 	display: flex;
+	max-width: 260px;
 	font-size: 20px;
+	background-color: $green;
+	margin: 10px;
+	border-radius: 12px;
 	padding: 5px;
+	color: white;
 	justify-content: space-between;
 	.item__icon {
 		height: 30px;
 		width: 30px;
+		path {
+			fill: white;
+		}
 	}
 }
 
@@ -211,6 +225,7 @@ button::-moz-focus-inner {
 		margin: 0 5px;
 		padding: 3px 15px;
 		background-color: $green;
+		color: white;
 		border-radius: 6px;
 	}
 }
@@ -258,7 +273,7 @@ button::-moz-focus-inner {
 }
 
 .hot {
-	background-color: $orange;
+	background-color: $yellow;
 }
 
 .cold {

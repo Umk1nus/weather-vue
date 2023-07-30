@@ -25,11 +25,11 @@ const addLocation = (land: string) => {
     .then(res => res.json())
     .then(data => {
       if (data.cod === 200) {
-        weatherItems.value.push({land: data?.name, temp: Math.round(data?.main?.temp), wind: Math.round(data?.wind?.speed), description: data.weather[0].description, id_weather: data.weather[0].icon.slice(0, -1)})
-        errorAddLocation.value = ''
-      } else {
-        errorAddLocation.value = data.message
-      }
+        if(!weatherItems.value.find(el => el.land === data.name)) {
+          weatherItems.value.push({land: data?.name, temp: Math.round(data?.main?.temp), wind: Math.round(data?.wind?.speed), description: data.weather[0].description, id_weather: data.weather[0].icon.slice(0, -1)})
+          errorAddLocation.value = ''
+        } else errorAddLocation.value = 'there is already a widget with this city' 
+      } else errorAddLocation.value = data.message
     })
     .catch(error => console.error(error))
 }
@@ -57,6 +57,7 @@ const weatherMyLocation = (key: string) => {
     .then(res => res.json())
     .then(data => {
       if(data.code === 200) {
+        localStorage.setItem('key', key)
         weatherItems.value.push({land: 'Your city', temp: Math.round(data?.current?.temp), wind: Math.round(data?.current?.wind_speed), description: data.current?.weather[0]?.description, id_weather: data.current?.weather[0]?.icon.slice(0, -1)})
         errorMyLocation.value = ''
       } else errorMyLocation.value = data.message
@@ -67,7 +68,9 @@ const weatherMyLocation = (key: string) => {
 onBeforeMount(() => {
   const weather = localStorage.getItem('weather')
   const coords = localStorage.getItem('coords')
-  weather && Array.from(JSON.parse(weather)).map(item => addLocation(item as string))
+  const key = localStorage.getItem('key') 
+
+  weather && Array.from(JSON.parse(weather)).map(item => item !== 'Your city' && addLocation(item as string))
 
   if(coords) {
     const {latitude, long} = JSON.parse(coords)
@@ -81,6 +84,7 @@ onBeforeMount(() => {
     localStorage.setItem('coords', JSON.stringify({latitude: latitude, long: longitude}))
     })
   }
+  key && weatherMyLocation(key)
 })
 
 onUpdated(() => {

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import CloseIcon from '@heroicons/vue/24/solid/XCircleIcon'
-import HeartIcon from '@heroicons/vue/24/solid/HeartIcon'
+import ArrowIcon from '@heroicons/vue/24/solid/ArrowRightIcon'
 import SettingsItem from './SettingsItem.vue';
 import { Ref, ref } from 'vue';
 
@@ -17,14 +17,10 @@ const props = defineProps({
 })
 
 const searchValue: Ref<string> = ref('')
-const error: Ref<string> = ref('')
 
 const getLocation = () => {
-  if (!props.weatherItems?.includes(searchValue.value)) {
-    props.addLocation && props.addLocation(searchValue.value)
-    searchValue.value = ''
-    error.value = ''
-  } else error.value = 'there is already a widget with this city'
+  props.addLocation && props.addLocation(searchValue.value)
+  searchValue.value = ''
 }
 </script>
 
@@ -39,11 +35,11 @@ const getLocation = () => {
       <div class="settings__search-input">
         <input type="text" placeholder="search" v-model="searchValue">
         <button @click="getLocation">
-          <heart-icon/>
+          <arrow-icon/>
         </button>
       </div>
       <p class="settings__search-error">
-        {{ error || errorAddLocation }}
+        {{ errorAddLocation }}
       </p>
     </div>
     <div class="settings__main">

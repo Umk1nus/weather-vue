@@ -20,7 +20,7 @@ defineProps({
     </div>
     <p class="card__description">{{ description }}</p>
     <div>
-      <p>wind <span class="card__wind">{{ wind }}</span> m/s</p>
+      <p>wind <span class="card__wind" :style="{background: Number(wind) > 5 ? 'red' : '#1ABB85'}">{{ wind }}</span> m/s</p>
     </div>
   </div>
 </template>
