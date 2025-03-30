@@ -1,282 +1,300 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
 
-$yellow:#FACB59;
+$yellow: #FACB59;
 $orange: #F9A545;
 $green: #1ABB85;
 $blue: #031926;
 
 * {
-	font-family: 'Roboto', sans-serif;
-	padding: 0px;
-	margin: 0px;
-	border: none;
-	::before,
-	::after {
-		box-sizing: border-box;
-	}
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
 }
 
 body {
-	max-width: 1920px;
-	background-color: $green
+  max-width: 1920px;
+  background-color: $green;
 }
 
-a, a:link, a:visited, a:hover  {
-    text-decoration: none;
-		color: $orange;
+a {
+  text-decoration: none;
+  color: $orange;
 }
 
 h1, h2, h3, h4, h5, h6, p {
   font-size: inherit;
-	font-weight: inherit;
+  font-weight: inherit;
 }
 
-ul, ul li {
-	list-style: none;
-}
-
-img {
-	vertical-align: top;
+ul, li {
+  list-style: none;
 }
 
 img, svg {
-	max-width: 100%;
-	height: auto;
+  vertical-align: top;
+  max-width: 100%;
+  height: auto;
 }
 
 input, textarea, button, select {
-	font-family: inherit;
+  font-family: inherit;
   font-size: inherit;
   color: inherit;
   background-color: transparent;
 }
 
-input::-ms-clear {
-	display: none;
+input::-ms-clear, button::-moz-focus-inner {
+  display: none;
+  padding: 0;
+  border: 0;
 }
 
 button, input[type="submit"] {
   display: inline-block;
   box-shadow: none;
   background-color: transparent;
-  background: none;
   cursor: pointer;
 }
 
-input:focus, input:active,
-button:focus, button:active {
+input:focus, input:active, button:focus, button:active {
   outline: none;
 }
 
-button::-moz-focus-inner {
-	padding: 0;
-	border: 0;
-}
-
 .header {
-	position: relative;
-	font-size: 24px;
-	padding: 20px 50px;
-	align-items: center;
-	display: flex;
-	justify-content: space-between
-	;
-	.header__title {
-		color: white;
-		font-size: 1.2em;
-		font-weight: 700
-	};
-	.header__settings-visible {
-		cursor: pointer;
-		height: 40px;
-		path{
-			fill: $orange;
-		}
-	}
+  position: relative;
+  font-size: 24px;
+  padding: 20px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__title {
+    color: white;
+    font-size: 1.2em;
+    font-weight: 700;
+  }
+
+  &__settings-visible {
+    cursor: pointer;
+    height: 40px;
+
+    path {
+      fill: $orange;
+    }
+  }
 }
 
 .settings {
-	padding: 20px 50px;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 300px;
-	background-color: #d9d9d9;
-	.settings__header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		.settings__header-title {
-			font-size: 1em;
-		}
-		.settings__header-close {
-			cursor: pointer;
-			height: 40px;
-			path {
-				fill: $green;
-			}
-		}
-	}
-	.settings__search {
-		max-width: 280px;
-		padding: 10px 0;
-		.settings__search-title {
-			font-size: 20px;
-		}
-		.settings__search-input {
-			margin: 10px 0;
-			border: 2px solid $green;
-			width: 100%;
-			display: flex;
-			font-size: 14px;
-			border-radius: 12px;
-			input {
-				width: 70%;
-				padding-left: 10px;
-			}
-			button {
-				text-align: center;
-				padding: 5px;
-				border-radius: 0px 10px 10px 0px;
-				width: 30%;
-				background-color: #1ABB85;
-				svg {
-					height: 20px;
-					path {
-						fill: white;
-					}
-				}
-			}
-		}
-		.settings__search-error {
-			padding-top: 10px;
-			font-size: 14px;
-			color: red;
-		}
-	}
-	.settings__main {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
+  padding: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 300px;
+  background-color: #d9d9d9;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-title {
+      font-size: 1em;
+    }
+
+    &-close {
+      cursor: pointer;
+      height: 40px;
+
+      path {
+        fill: $green;
+      }
+    }
+  }
+
+  &__search {
+    max-width: 280px;
+    padding: 10px 0;
+
+    &-title {
+      font-size: 20px;
+    }
+
+    &-input {
+      margin: 10px 0;
+      border: 2px solid $green;
+      width: 100%;
+      display: flex;
+      font-size: 14px;
+      border-radius: 12px;
+
+      input {
+        width: 70%;
+        padding-left: 10px;
+      }
+
+      button {
+        text-align: center;
+        padding: 5px;
+        border-radius: 0 10px 10px 0;
+        width: 30%;
+        background-color: $green;
+
+        svg {
+          height: 20px;
+
+          path {
+            fill: white;
+          }
+        }
+      }
+    }
+
+    &-error {
+      padding-top: 10px;
+      font-size: 14px;
+      color: red;
+    }
+  }
+
+  &__main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .item {
-	display: flex;
-	max-width: 260px;
-	font-size: 20px;
-	background-color: $green;
-	margin: 10px;
-	border-radius: 12px;
-	padding: 5px;
-	color: white;
-	justify-content: space-between;
-	.item__icon {
-		height: 30px;
-		width: 30px;
-		path {
-			fill: white;
-		}
-	}
+  display: flex;
+  max-width: 260px;
+  font-size: 20px;
+  background-color: $green;
+  margin: 10px;
+  border-radius: 12px;
+  padding: 5px;
+  color: white;
+  justify-content: space-between;
+
+  &__icon {
+    height: 30px;
+    width: 30px;
+
+    path {
+      fill: white;
+    }
+  }
 }
 
 .burger {
-	cursor: grab;
+  cursor: grab;
 }
 
 .delete {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .main {
-	padding: 45px;
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
+  padding: 45px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card {
-	border-radius: 20px;
-	max-width: 250px;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	padding: 35px 25px;
-	margin: 20px;
-	.card__title {
-		font-size: 1.5em;
-		font-weight: 500;
-	}
-	.card__weather {
-		padding: 15px 0;
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-		.card__weather-temp {
-			font-size: 2.3em;
-		}
-	}
-	.card__description {
-		font-weight: 300;
-		padding: 10px 0px 20px 0px;
-	}
-	.card__wind {
-		margin: 0 5px;
-		padding: 3px 15px;
-		background-color: $green;
-		color: white;
-		border-radius: 6px;
-	}
+  border-radius: 20px;
+  max-width: 250px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 35px 25px;
+  margin: 20px;
+
+  &__title {
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+
+  &__weather {
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    &-temp {
+      font-size: 2.3em;
+    }
+  }
+
+  &__description {
+    font-weight: 300;
+    padding: 10px 0 20px;
+  }
+
+  &__wind {
+    margin: 0 5px;
+    padding: 3px 15px;
+    background-color: $green;
+    color: white;
+    border-radius: 6px;
+  }
 }
 
 .location {
-	margin: 0 20px;
-	color: white;
-	padding: 20px 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	.location__title {
-		font-size: 24px;
-	}
-	.location__error {
-		color: red;
-		padding-bottom: 10px;
-		font-size: 12px;
-		text-align: center;
-		max-width: 700px;
-	}
-	.location__api {
-		border: 1px solid $orange;
-		display: flex;
-		align-items: center;
-		margin: 20px 0;
-		max-width: 600px;
-		width: 100%;
-		input {
-			padding-left: 10px;
-			width: 70%;
-			font-size: 24px;
-		}
-		button {
-			width: 30%;
-			background-color: $orange;
-			svg {
-				height: 40px;
-				path {
-					fill: $green;
-				}
-			}
-		}
-	}
+  margin: 0 20px;
+  color: white;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-size: 24px;
+  }
+
+  &__error {
+    color: red;
+    padding-bottom: 10px;
+    font-size: 12px;
+    text-align: center;
+    max-width: 700px;
+  }
+
+  &__api {
+    border: 1px solid $orange;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    max-width: 600px;
+    width: 100%;
+
+    input {
+      padding-left: 10px;
+      width: 70%;
+      font-size: 24px;
+    }
+
+    button {
+      width: 30%;
+      background-color: $orange;
+
+      svg {
+        height: 40px;
+
+        path {
+          fill: $green;
+        }
+      }
+    }
+  }
 }
 
 .hot {
-	background-color: $yellow;
+  background-color: $yellow;
 }
 
 .cold {
-	color: white;
-	background-color: $blue;
+  color: white;
+  background-color: $blue;
 }
