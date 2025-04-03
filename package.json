@@ -1,29 +1,24 @@
 {
-  "name": "weather-widget",
-  "version": "0.1.0",
+  "name": "my-vue-app",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@heroicons/vue": "^2.0.18",
-    "core-js": "^3.8.3",
-    "vue": "^3.2.13",
-    "vue-class-component": "^8.0.0-0"
+    "@heroicons/vue": "^2.2.0",
+    "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-typescript": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "sass": "^1.32.7",
-    "sass-loader": "^12.0.0",
-    "typescript": "~4.5.5"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+    "@types/sass": "^1.43.1",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "sass-embedded": "^1.86.2",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0",
+    "vue-tsc": "^2.2.4"
+  }
 }

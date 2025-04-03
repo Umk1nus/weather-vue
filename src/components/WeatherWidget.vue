@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import HeaderWidget from './HeaderWidget.vue'
-import WeatherCard from './WeatherCard.vue'
+import WeatherCard from './ui/WeatherCard.vue'
 import MyLocation from './MyLocation.vue'
 import { fetchWeatherData } from '../helper'
-import { TWeather } from '../types'
+import type { TWeather } from '../types'
+import type { Ref } from 'vue'
 import { API_KEY, API_MAIN, API_VERSION } from '../constants'
-import { Ref, onBeforeMount, onUpdated, ref } from 'vue'
+import { onBeforeMount, onUpdated, ref } from 'vue'
 
 const weatherItems: Ref<TWeather[]> = ref([])
 const geoLatitude: Ref<number> = ref(0)

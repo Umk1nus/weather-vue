@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { getIcon } from '../helper'
-import { WeatherCardProps } from '../types'
+import { getIcon } from '../../helper'
+import type { WeatherCardProps } from '../../types'
 
 defineProps<WeatherCardProps>()
 
