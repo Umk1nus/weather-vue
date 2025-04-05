@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { SettingsItemProps } from '../types'
+import type { SettingsItemProps } from '@/types'
 import CloseIcon from '@heroicons/vue/24/solid/XCircleIcon'
 import BarsIcon from '@heroicons/vue/24/solid/Bars3Icon'
 

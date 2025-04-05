@@ -2,10 +2,10 @@
 import HeaderWidget from './HeaderWidget.vue'
 import WeatherCard from './ui/WeatherCard.vue'
 import MyLocation from './MyLocation.vue'
-import { fetchWeatherData } from '../helper'
-import type { TWeather } from '../types'
+import { fetchWeatherData } from '@/helper'
+import type { TWeather } from '@/types'
 import type { Ref } from 'vue'
-import { API_KEY, API_MAIN, API_VERSION } from '../constants'
+import { API_KEY, API_MAIN, API_VERSION } from '@/constants'
 import { onBeforeMount, onUpdated, ref } from 'vue'
 
 const weatherItems: Ref<TWeather[]> = ref([])

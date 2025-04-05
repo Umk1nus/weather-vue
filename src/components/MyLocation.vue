@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import type { Ref } from 'vue'
-import type { MyLocationProps } from '../types'
+import type { MyLocationProps } from '@/types'
 import ArrowIcon from '@heroicons/vue/24/solid/ArrowRightIcon'
 
 const props = defineProps<MyLocationProps>()

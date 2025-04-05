@@ -2,7 +2,7 @@
 import CloseIcon from '@heroicons/vue/24/solid/XCircleIcon'
 import ArrowIcon from '@heroicons/vue/24/solid/ArrowRightIcon'
 import SettingsItem from './SettingsItem.vue'
-import type { SettingsProps } from '../types'
+import type { SettingsProps } from '@/types'
 import type { Ref } from 'vue'
 import { ref } from 'vue'
 

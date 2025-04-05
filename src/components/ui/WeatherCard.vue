@@ -1,14 +1,15 @@
 <script lang="ts" setup>
-import { getIcon } from '../../helper'
-import type { WeatherCardProps } from '../../types'
+import { getIcon } from '@/helper';
+import type { WeatherCardProps } from '@/types'
 
-defineProps<WeatherCardProps>()
+defineProps<WeatherCardProps>();
 
-const getTemperatureClass = (temp: number) => (temp >= 20 ? 'hot' : 'cold')
+const getTemperatureClass = (temp: number) => (temp >= 20 ? 'hot' : 'cold');
 
 const getWindStyle = (wind: number) => ({
   background: wind > 5 ? 'red' : '#1ABB85'
 })
+
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import SettingsWidget from './SettingsWidget.vue'
 import SettingsIcon from '@heroicons/vue/24/solid/Cog8ToothIcon'
-import type { HeaderWidgetProps } from '../types'
+import type { HeaderWidgetProps } from '@/types'
 import { ref } from 'vue'
 
 defineProps<HeaderWidgetProps>()
